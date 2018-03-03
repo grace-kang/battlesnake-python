@@ -76,7 +76,7 @@ def move():
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
     if (mysnake['health'] <= 50):
-        for i in range(-5,5):
+        for i in range(-2,2):
             if (grid[x+i][y] == FOOD):
                 if (i < 0):
                     direction = 'left'
