@@ -76,12 +76,14 @@ def move():
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
     if (grid[x+1][y] == WALL):
-        if (grid[x+1][y+1] == WALL):
-            direction = 'up'
-        else:
-            direction = 'down'
+        direction = 'up'
+    elif (grid[x][y-1] == WALL):
+        direction = 'left'
+    elif (grid[x-1][y] == WALL):
+        direction = 'down'
     else:
         direction = 'right'
+
 
     return {
         'move': direction,
