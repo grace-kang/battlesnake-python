@@ -95,11 +95,11 @@ def move():
                     else:
                         direction = 'down'
 
-            if (b == True):
-                return {
-                    'move': direction,
-                    'taunt': 'blast off!'
-                }     
+            # if (b == True):
+            #     return {
+            #         'move': direction,
+            #         'taunt': 'blast off!'
+            #     }     
 
     direction = 'up'
     if (grid[x+1][y] == WALL):
