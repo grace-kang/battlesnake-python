@@ -13,14 +13,14 @@ def init(data):
     for p in data['you']['body']['data']:
         grid[p['x']][p['y']] = SNAKE
 
-    for x in range(data['width']):
-        grid[x][0] = WALL
-    for x in range(data['width']):
-        grid[x][data['height']-1] = WALL
-    for y in range(data['height']):
-        grid[0][y] = WALL
-    for y in range(data['height']):
-        grid[data['width'][0]] = WALL
+    # for x in range(data['width']):
+    #     grid[x][0] = WALL
+    # for x in range(data['width']):
+    #     grid[x][data['height']-1] = WALL
+    # for y in range(data['height']):
+    #     grid[0][y] = WALL
+    # for y in range(data['height']):
+    #     grid[data['width'][0]] = WALL
 
     for f in data['food']['data']:
         grid[f['x']][f['y']] = FOOD
