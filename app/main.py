@@ -8,6 +8,8 @@ FOOD = 3
 
 def init(data):
     grid = [[0 for col in range(data['height'])] for row in range(data['width'])]
+    mysnake = data['you']['id']
+
     for p in data['you']['body']['data']:
         grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
