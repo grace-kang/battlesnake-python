@@ -71,7 +71,7 @@ def move():
 
     # TODO: Do things with data
     for s in data['snakes']:
-        if s['data']['length'] > 0:
+        if (s['data']['length'] > 0):
             for p in s['data']['body']:
                 grid[p['x']][p['y']] = WALL
 
