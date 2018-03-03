@@ -75,12 +75,11 @@ def move():
     #         for p in s['data']['body']:
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
-    # if (grid[x+1][y] == 2):
-    #     direction = 'up'
-    # else:
-    #     direction = 'right'
+    if (grid[x+1][y] == 2):
+        direction = 'up'
+    else:
+        direction = 'right'
 
-    direction = 'right'
     return {
         'move': direction,
         'taunt': 'blast off!'
