@@ -14,16 +14,16 @@ def init(data):
         grid[p['x']][p['y']] = SNAKE
 
     for x in range(data['width']):
-        grid[x][0] = WALL
+        grid[x][-1] = WALL
     for x in range(data['width']):
         grid[x][data['height']] = WALL
     for y in range(data['height']):
-        grid[0][y] = WALL
+        grid[-2][y] = WALL
     for y in range(data['height']):
         grid[data['width']][y] = WALL
 
-    for f in data['food']['data']:
-        grid[f['x']][f['y']] = FOOD
+    # for f in data['food']['data']:
+    #     grid[f['x']][f['y']] = FOOD
 
     return mysnake, grid
 
