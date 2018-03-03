@@ -83,44 +83,11 @@ def move():
                 else:
                     direction = 'right'
 
-                if (grid[x+1][y] == WALL):
-                    if (grid[x][y-1] == WALL):
-                        direction = 'left'         
-                elif (grid[x][y-1] == WALL):
-                    if (grid[x-1][y] == WALL):
-                        direction = 'down'
-                elif (grid[x-1][y] == WALL):
-                    if (grid[x][y+1] == WALL):
-                        direction = 'right'
-                elif (grid[x][y+1] == WALL):
-                    if (grid[x+1][y] == WALL):
-                        direction = 'up'
-                return {
-                    'move': direction,
-                    'taunt': 'blast off!'
-                }
             elif (grid[x][y+i] == FOOD):
                 if (i < 0):
                     direction = 'up'
                 else:
                     direction = 'down'
-
-                if (grid[x+1][y] == WALL):
-                    if (grid[x][y-1] == WALL):
-                        direction = 'left'         
-                elif (grid[x][y-1] == WALL):
-                    if (grid[x-1][y] == WALL):
-                        direction = 'down'
-                elif (grid[x-1][y] == WALL):
-                    if (grid[x][y+1] == WALL):
-                        direction = 'right'
-                elif (grid[x][y+1] == WALL):
-                    if (grid[x+1][y] == WALL):
-                        direction = 'up'
-                return {
-                    'move': direction,
-                    'taunt': 'blast off!'
-                }
 
 
     if (grid[x+1][y] == WALL):
@@ -138,17 +105,17 @@ def move():
             direction = 'right'
         else:
             direction = 'down'
-    else:
-        if (grid[x+1][y] == SNAKE):
-            direction = 'left'
-        elif (grid[x][y-1] == SNAKE):
-            direction = 'down'
-        elif (grid[x-1][y] == SNAKE):
-            direction = 'right'
-        elif (grid[x][y+1] == SNAKE):
-            direction = 'up'
-        else:
-            direction = 'right'
+    # else:
+        # if (grid[x+1][y] == SNAKE):
+        #     direction = 'left'
+        # elif (grid[x][y-1] == SNAKE):
+        #     direction = 'down'
+        # elif (grid[x-1][y] == SNAKE):
+        #     direction = 'right'
+        # elif (grid[x][y+1] == SNAKE):
+        #     direction = 'up'
+        # else:
+            # direction = 'right'
 
     return {
         'move': direction,
