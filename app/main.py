@@ -82,13 +82,13 @@ def move():
                     direction = 'up'
                 else:
                     direction = 'down'
-            elif: (grid[x][y+i] == FOOD):
+            elif (grid[x][y+i] == FOOD):
                 if (i < 0):
                     direction = 'left'
                 else:
                     direction = 'right'
 
-    else :
+    else:
         if (grid[x+1][y] == WALL):
             if (grid[x][y-1] == WALL):
                 direction = 'left'
