@@ -99,17 +99,17 @@ def move():
 
     if (grid[x+1][y] == WALL):
         if (grid[x][y-1] == WALL):
-            direction = 'down'
+            direction = 'left'
         else:
             direction = 'up'
     elif (grid[x][y-1] == WALL):
         if (grid[x-1][y] == WALL):
-            direction = 'right'
+            direction = 'down'
         else:
             direction = 'left'
     elif (grid[x-1][y] == WALL):
         if (grid[x][y+1] == WALL):
-            direction = 'up'
+            direction = 'right'
         else:
             direction = 'down'
     else:
