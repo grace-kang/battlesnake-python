@@ -7,7 +7,7 @@ WALL = 2
 FOOD = 3
 
 def init(data):
-    grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
+    grid = [[0 for col in range(data['height'])] for row in range(data['width'])]
     for p in data['you']['body']['data']:
         grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
@@ -20,8 +20,8 @@ def init(data):
     for y in range(data['height']):
         grid[data['width'][0]] = WALL
 
-    for f in data['food']:
-        grid[f[0]][f[1]] = FOOD
+    for f in data['food']['data']:
+        grid[f['object']['point']['x']][f['object']['point']['y']] = FOOD
 
     return mysnake, grid
 
