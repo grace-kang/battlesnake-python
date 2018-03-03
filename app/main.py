@@ -75,8 +75,7 @@ def move():
     #         for p in s['data']['body']:
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
-    direction = 'up'
-    if (mysnake['health'] <= 1):
+    if (mysnake['health'] <= 100):
         for i in range(-5,5):
             if (grid[x+i][y] == FOOD):
                 b = True
@@ -100,7 +99,7 @@ def move():
                     'taunt': 'blast off!'
                 }     
 
-
+    direction = 'up'
     if (grid[x+1][y] == WALL):
         if (grid[x][y-1] == WALL):
             direction = 'left'
