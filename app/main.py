@@ -96,23 +96,32 @@ def move():
                     'taunt': 'blast off!'
                 }
 
-    if (grid[x+1][y] == WALL | grid[x+1][y] == SNAKE):
+    if (grid[x+1][y] == WALL):
         if (grid[x][y-1] == WALL):
             direction = 'left'
         else:
             direction = 'up'
-    elif (grid[x][y-1] == WALL | grid[x][y-1] == SNAKE):
+    elif (grid[x][y-1] == WALL):
         if (grid[x-1][y] == WALL):
             direction = 'down'
         else:
             direction = 'left'
-    elif (grid[x-1][y] == WALL | grid[x-1][y] == SNAKE):
+    elif (grid[x-1][y] == WALL):
         if (grid[x][y+1] == WALL):
             direction = 'right'
         else:
             direction = 'down'
     else:
-        direction = 'right'
+        if (grid[x+1][y] == SNAKE):
+            direction = 'left'
+        elif (grid[x][y-1] == SNAKE):
+            direction = 'down'
+        elif (grid[x-1][y] == SNAKE):
+            direction = 'right'
+        elif (grid[x][y+1] == SNAKE):
+            direction = 'up'
+        else:
+            direction = 'right'
 
     return {
         'move': direction,
