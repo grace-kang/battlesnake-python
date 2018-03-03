@@ -22,8 +22,8 @@ def init(data):
     for y in range(data['height']):
         grid[data['width']][y] = WALL
 
-    # for f in data['food']['data']:
-    #     grid[f['x']][f['y']] = FOOD
+    for f in data['food']['data']:
+        grid[f['x']][f['y']] = FOOD
 
     return mysnake, grid
 
