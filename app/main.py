@@ -63,8 +63,8 @@ def start():
 def move():
     data = bottle.request.json
     mysnake, grid = init(data)
-    x = mysnake['body']['data']['x']
-    y = mysnake['body']['data']['y']
+    # x = mysnake['body']['data']['x']
+    # y = mysnake['body']['data']['y']
 
     # TODO: Do things with data
     # for s in data['snakes']:
