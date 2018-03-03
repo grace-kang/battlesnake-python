@@ -96,6 +96,11 @@ def move():
                     'taunt': 'blast off!'
                 }
 
+    direction = 'up'
+    return {
+        'move': direction,
+        'taunt': 'blast off!'
+    }
     if (grid[x+1][y] == WALL):
         if (grid[x][y-1] == WALL):
             direction = 'left'
