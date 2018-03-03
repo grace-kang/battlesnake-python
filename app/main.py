@@ -106,6 +106,11 @@ def move():
             direction = 'right'
         else:
             direction = 'down'
+    elif (grid[x][y+1] == WALL):
+        if (grid[x+1][y] == WALL):
+            direction = 'up'
+        else:
+            direction = 'right'
     # else:
         # if (grid[x+1][y] == SNAKE):
         #     direction = 'left'
