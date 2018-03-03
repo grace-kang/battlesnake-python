@@ -38,15 +38,20 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+    snake, grid = init(data)
 
     # TODO: Do things with data
+    # for s in snakes['data']:
+    #     if s['length'] > 0:
+    #         for p in s['body']
+
     
     directions = ['up', 'down', 'left', 'right']
-    direction = random.choice(directions)
+    direction = 'up'
     print direction
     return {
         'move': direction,
-        'taunt': 'battlesnake-python!'
+        'taunt': 'blast off!'
     }
 
 
