@@ -70,10 +70,10 @@ def move():
         break
 
     # TODO: Do things with data
-    # for s in data['snakes']:
-    #     if s['data']['length'] > 0:
-    #         for p in s['data']['body']:
-    #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
+    for s in data['snakes']:
+        if s['data']['length'] > 0:
+            for p in s['data']['body']:
+                grid[p['x']][p['y']] = WALL
 
     b = False
     if (mysnake['health'] <= 100):
@@ -121,17 +121,17 @@ def move():
             direction = 'up'
         else:
             direction = 'right'
-    # else:
-        # if (grid[x+1][y] == SNAKE):
-        #     direction = 'left'
-        # elif (grid[x][y-1] == SNAKE):
-        #     direction = 'down'
-        # elif (grid[x-1][y] == SNAKE):
-        #     direction = 'right'
-        # elif (grid[x][y+1] == SNAKE):
-        #     direction = 'up'
-        # else:
-            # direction = 'right'
+    else:
+        if (grid[x+1][y] == SNAKE):
+            direction = 'left'
+        elif (grid[x][y-1] == SNAKE):
+            direction = 'down'
+        elif (grid[x-1][y] == SNAKE):
+            direction = 'right'
+        elif (grid[x][y+1] == SNAKE):
+            direction = 'up'
+        else:
+            direction = 'right'
 
     return {
         'move': direction,
