@@ -79,18 +79,18 @@ def move():
         for i in range(-2,2):
             if (grid[x+i][y] == FOOD):
                 if (i < 0):
-                    direction = 'up'
+                    direction = 'left'
                 else:
-                    direction = 'down'
+                    direction = 'right'
                 return {
                     'move': direction,
                     'taunt': 'blast off!'
                 }
             elif (grid[x][y+i] == FOOD):
                 if (i < 0):
-                    direction = 'left'
+                    direction = 'up'
                 else:
-                    direction = 'right'
+                    direction = 'down'
                 return {
                     'move': direction,
                     'taunt': 'blast off!'
