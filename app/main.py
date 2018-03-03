@@ -75,10 +75,10 @@ def move():
     #         for p in s['data']['body']:
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
-    if (grid[x+1][y] == 2):
-        if (grid[x+1][y+1] == 2):
-            direction = 'up'
-        else:
+    if (grid[x+1][y] == WALL):
+        # if (grid[x+1][y+1] == WALL):
+        #     direction = 'up'
+        # else:
             direction = 'down'
     else:
         direction = 'right'
