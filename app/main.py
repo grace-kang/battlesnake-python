@@ -8,7 +8,7 @@ FOOD = 3
 
 def init(data):
     grid = [[0 for col in range(data['height'])] for row in range(data['width'])]
-    mysnake = data['you']['id']
+    mysnake = data['you']
 
     for p in data['you']['body']['data']:
         grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
@@ -74,7 +74,6 @@ def move():
     
     directions = ['up', 'down', 'left', 'right']
     direction = 'right'
-    print direction
     return {
         'move': direction,
         'taunt': 'blast off!'
