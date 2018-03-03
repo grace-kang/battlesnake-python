@@ -77,19 +77,21 @@ def move():
 
     if (mysnake['health'] <= 100):
         for i in range(-5,5):
-            if (grid[x+i][y] == FOOD):
-                b = True
-                if (i < 0):
-                    direction = 'left'
-                else:
-                    direction = 'right'
-                
-            elif (grid[x][y+i] == FOOD):
-                b = True
-                if (i < 0):
-                    direction = 'up'
-                else:
-                    direction = 'down'
+            if ((x+i > 0) & (x+i < data['width'])):
+                if (grid[x+i][y] == FOOD):
+                    b = True
+                    if (i < 0):
+                        direction = 'left'
+                    else:
+                        direction = 'right'
+
+            if ((y+i > 0) & (y+i < data['height'])):
+                if (grid[x][y+i] == FOOD):
+                    b = True
+                    if (i < 0):
+                        direction = 'up'
+                    else:
+                        direction = 'down'
             else:
                 b = False
 
