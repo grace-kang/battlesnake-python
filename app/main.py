@@ -18,7 +18,7 @@ def init(data):
     for x in range(data['width']):
         grid[x][data['height']] = WALL
     for y in range(data['height']):
-        grid[-2][y] = WALL
+        grid[-1][y] = WALL
     for y in range(data['height']):
         grid[data['width']][y] = WALL
 
