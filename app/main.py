@@ -82,30 +82,37 @@ def move():
                     direction = 'up'
                 else:
                     direction = 'down'
+                return {
+                    'move': direction,
+                    'taunt': 'blast off!'
+                }
             elif (grid[x][y+i] == FOOD):
                 if (i < 0):
                     direction = 'left'
                 else:
                     direction = 'right'
+                return {
+                    'move': direction,
+                    'taunt': 'blast off!'
+                }
 
-    else:
-        if (grid[x+1][y] == WALL):
-            if (grid[x][y-1] == WALL):
-                direction = 'left'
-            else:
-                direction = 'up'
-        elif (grid[x][y-1] == WALL):
-            if (grid[x-1][y] == WALL):
-                direction = 'down'
-            else:
-                direction = 'left'
-        elif (grid[x-1][y] == WALL):
-            if (grid[x][y+1] == WALL):
-                direction = 'right'
-            else:
-                direction = 'down'
+    if (grid[x+1][y] == WALL):
+        if (grid[x][y-1] == WALL):
+            direction = 'left'
         else:
+            direction = 'up'
+    elif (grid[x][y-1] == WALL):
+        if (grid[x-1][y] == WALL):
+            direction = 'down'
+        else:
+            direction = 'left'
+    elif (grid[x-1][y] == WALL):
+        if (grid[x][y+1] == WALL):
             direction = 'right'
+        else:
+            direction = 'down'
+    else:
+        direction = 'right'
 
 
     return {
