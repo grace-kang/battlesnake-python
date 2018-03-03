@@ -14,11 +14,11 @@ def init(data):
         grid[p['x']][p['y']] = SNAKE
 
     for x in range(data['width']):
-        grid[x][-1] = WALL
+        grid[x][0] = WALL
     for x in range(data['width']):
         grid[x][data['height']] = WALL
     for y in range(data['height']):
-        grid[-1][y] = WALL
+        grid[0][y] = WALL
     for y in range(data['height']):
         grid[data['width']][y] = WALL
 
@@ -82,18 +82,19 @@ def move():
                     direction = 'left'
                 else:
                     direction = 'right'
+                return {
+                    'move': direction,
+                    'taunt': 'blast off!'
+                }
             elif (grid[x][y+i] == FOOD):
                 if (i < 0):
                     direction = 'up'
                 else:
                     direction = 'down'
-
-    if (direction):
-        return {
-            'move': direction,
-            'taunt': 'blast off!'
-        }
-
+                return {
+                    'move': direction,
+                    'taunt': 'blast off!'
+                }
 
     if (grid[x+1][y] == WALL):
         if (grid[x][y-1] == WALL):
