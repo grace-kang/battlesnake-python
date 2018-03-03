@@ -16,11 +16,11 @@ def init(data):
     for x in range(data['width']):
         grid[x][0] = WALL
     for x in range(data['width']):
-        grid[x][data['height']] = WALL
+        grid[x][data['height']-1] = WALL
     for y in range(data['height']):
         grid[0][y] = WALL
     for y in range(data['height']):
-        grid[data['width']][y] = WALL
+        grid[data['width']-1][y] = WALL
 
     for f in data['food']['data']:
         grid[f['x']][f['y']] = FOOD
@@ -76,9 +76,9 @@ def move():
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
     if (grid[x+1][y] == WALL):
-        # if (grid[x+1][y+1] == WALL):
-        #     direction = 'up'
-        # else:
+        if (grid[x+1][y+1] == WALL):
+            direction = 'up'
+        else:
             direction = 'down'
     else:
         direction = 'right'
