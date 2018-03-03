@@ -75,6 +75,7 @@ def move():
     #         for p in s['data']['body']:
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
+    b = False
     if (mysnake['health'] <= 100):
         for i in range(-5,5):
             if ((x+i > 0) & (x+i < data['width'])):
@@ -92,8 +93,6 @@ def move():
                         direction = 'up'
                     else:
                         direction = 'down'
-            else:
-                b = False
 
             if (b == True):
                 return {
