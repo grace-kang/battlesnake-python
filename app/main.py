@@ -63,6 +63,8 @@ def start():
 def move():
     data = bottle.request.json
     mysnake, grid = init(data)
+    x = mysnake['body']['data']['x']
+    y = mysnake['body']['data']['y']
 
     # TODO: Do things with data
     # for s in data['snakes']:
@@ -70,10 +72,12 @@ def move():
     #         for p in s['data']['body']:
     #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
+    if (grid[x+1][y] == 2):
+        direction = 'up'
+    else:
+        direction = 'right'
 
-    
-    directions = ['up', 'down', 'left', 'right']
-    direction = 'right'
+
     return {
         'move': direction,
         'taunt': 'blast off!'
