@@ -8,10 +8,6 @@ FOOD = 3
 
 def init(data):
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
-    for snek in data['snakes']:
-        if snek['id']== data['you']['id']:
-            mysnake = snek
-
     for p in data['you']['object']['point']:
         grid[coord[0]][coord[1]] = SNAKE
 
@@ -65,7 +61,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    #snake, grid = init(data)
+    snake, grid = init(data)
 
     # TODO: Do things with data
     # for s in data['snakes']:
@@ -76,7 +72,7 @@ def move():
 
     
     directions = ['up', 'down', 'left', 'right']
-    direction = 'down'
+    direction = 'right'
     print direction
     return {
         'move': direction,
