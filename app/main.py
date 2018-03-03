@@ -70,10 +70,11 @@ def move():
         break
 
     # TODO: Do things with data
-    # for s in data['snakes']['data']:
-    #     if (s['length'] > 0):
-    #         for p in s['body']['data']:
-    #             grid[p['x']][p['y']] = WALL
+    for s in data['snakes']['data']:
+        if not (s['id'] == mysnake['id']):
+            if (s['length'] > 0):
+                for p in s['body']['data']:
+                    grid[p['x']][p['y']] = WALL
 
     b = False
     if (mysnake['health'] <= 100):
