@@ -65,7 +65,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    snake, grid = init(data)
+    #snake, grid = init(data)
 
     # TODO: Do things with data
     # for s in data['snakes']:
