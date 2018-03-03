@@ -8,9 +8,8 @@ FOOD = 3
 
 def init(data):
     grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
-    for p in data['you']['object']['point']:
-        grid[coord[0]][coord[1]] = SNAKE
-
+    for p in data['you']['body']['data']:
+        grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
     for x in range(data['width']):
         grid[x][0] = WALL
@@ -61,7 +60,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    snake, grid = init(data)
+    mysnake, grid = init(data)
 
     # TODO: Do things with data
     # for s in data['snakes']:
