@@ -2,6 +2,33 @@ import bottle
 import os
 import random
 
+SNAKE = 1
+WALL = 2
+FOOD = 3
+
+def init(data):
+    grid = [[0 for col in xrange(data['height'])] for row in xrange(data['width'])]
+    for snek in data['snakes']:
+        if snek['id']== data['you']['id']:
+            mysnake = snek
+
+    for p in data['you']['object']['point']:
+        grid[coord[0]][coord[1]] = SNAKE
+
+
+    for x in range(data['width']):
+        grid[x][0] = WALL
+    for x in range(data['width']):
+        grid[x][data['height']-1] = WALL
+    for y in range(data['height']):
+        grid[0][y] = WALL
+    for y in range(data['height']):
+        grid[data['width'][0]] = WALL
+
+    for f in data['food']:
+        grid[f[0]][f[1]] = FOOD
+
+    return mysnake, grid
 
 
 @bottle.route('/')
@@ -41,13 +68,15 @@ def move():
     snake, grid = init(data)
 
     # TODO: Do things with data
-    # for s in snakes['data']:
-    #     if s['length'] > 0:
-    #         for p in s['body']
+    # for s in data['snakes']:
+    #     if s['data']['length'] > 0:
+    #         for p in s['data']['body']:
+    #             grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
+
 
     
     directions = ['up', 'down', 'left', 'right']
-    direction = 'up'
+    direction = 'down'
     print direction
     return {
         'move': direction,
