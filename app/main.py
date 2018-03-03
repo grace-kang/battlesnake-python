@@ -10,8 +10,8 @@ def init(data):
     grid = [[0 for col in range(data['height'])] for row in range(data['width'])]
     mysnake = data['you']
 
-    # for p in data['you']['body']['data']:
-    #     grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
+    for p in data['you']['body']['data']:
+        grid[p['object']['point']['x']][p['object']['point']['y']] = SNAKE
 
     # for x in range(data['width']):
     #     grid[x][0] = WALL
