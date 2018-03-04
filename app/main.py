@@ -175,7 +175,7 @@ def move():
     return {
               'move': directions[i],
               'taunt': 'blast off!'
-          }     
+          }
     # direction = 'up'
     # if (grid[x+1][y] == WALL):
     #     a[3] = False
