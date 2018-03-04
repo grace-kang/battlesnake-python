@@ -72,6 +72,8 @@ def move():
         y = coors['y']
         break
 
+    direction = 'up'
+    
     # get coordinates of enemy snakes
     for s in data['snakes']['data']:
         if not (s['id'] == mysnake['id']):
