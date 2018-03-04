@@ -111,7 +111,7 @@ def move():
         }
 
     b = False
-    if (mysnake['health'] <= 100):
+    if (mysnake['health'] <= 90):
         for i in range(-5,5):
             if ((x+i > 0) & (x+i < data['width'])):
                 if (grid[x+i][y] == FOOD):
