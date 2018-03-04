@@ -12,7 +12,7 @@ def init(data):
     mysnake = data['you']
 
     for p in data['you']['body']['data']:
-        grid[p['x']][p['y']] = WALL
+        grid[p['x']][p['y']] = SNAKE
 
     for x in range(data['width']):
         grid[x][-1] = WALL
@@ -62,8 +62,6 @@ def start():
 
 @bottle.post('/move')
 def move():
-    directions = ['up', 'down', 'left', 'right']
-    a = [True, True, True, True]
     data = bottle.request.json
     mysnake, grid = init(data)
 
@@ -72,57 +70,47 @@ def move():
         y = coors['y']
         break
 
-    direction = 'up'
-
     # get coordinates of enemy snakes
     for s in data['snakes']['data']:
         if not (s['id'] == mysnake['id']):
             if (s['length'] > 0):
                 for p in s['body']['data']:
-                    grid[p['x']][p['y']] = WALL
+                    grid[p['x']][p['y']] = ENEMY
 
-    # b = False
-    # direction = 'up'
-    # if (grid[x+1][y] == ENEMY):
-    #     b = True
-    #     if (grid[x][y-1] == ENEMY):
-    #         direction = 'left'
-    #     else:
-    #         direction = 'up'
-    # elif (grid[x][y-1] == ENEMY):
-    #     b = True
-    #     if (grid[x-1][y] == ENEMY):
-    #         direction = 'down'
-    #     else:
-    #         direction = 'left'
-    # elif (grid[x-1][y] == ENEMY):
-    #     b = True
-    #     if (grid[x][y+1] == ENEMY):
-    #         direction = 'right'
-    #     else:
-    #         direction = 'down'
-    # elif (grid[x][y+1] == ENEMY):
-    #     b = True
-    #     if (grid[x+1][y] == ENEMY):
-    #         direction = 'up'
-    #     else:
-    #         direction = 'right'
+    b = False
+    direction = 'up'
+    if (grid[x+1][y] == ENEMY):
+        b = True
+        if (grid[x][y-1] == ENEMY):
+            direction = 'left'
+        else:
+            direction = 'up'
+    elif (grid[x][y-1] == ENEMY):
+        b = True
+        if (grid[x-1][y] == ENEMY):
+            direction = 'down'
+        else:
+            direction = 'left'
+    elif (grid[x-1][y] == ENEMY):
+        b = True
+        if (grid[x][y+1] == ENEMY):
+            direction = 'right'
+        else:
+            direction = 'down'
+    elif (grid[x][y+1] == ENEMY):
+        b = True
+        if (grid[x+1][y] == ENEMY):
+            direction = 'up'
+        else:
+            direction = 'right'
 
-    # if (b == True):
-    #     return {
-    #         'move': direction,
-    #         'taunt': 'blast off!'
-    #     }
-    if (grid[x+1][y] == WALL):
-        a[3] = False
-    if (grid[x][y-1] == WALL):
-        a[0] = False
-    if (grid[x-1][y] == WALL):
-        a[2] = False
-    if (grid[x][y+1] == WALL):
-        a[1] = False
+    if (b == True):
+        return {
+            'move': direction,
+            'taunt': 'blast off!'
+        }
 
-    # b = False
+    b = False
     if (mysnake['health'] <= 100):
         for i in range(-5,5):
             if ((x+i > 0) & (x+i < data['width'])):
@@ -141,68 +129,49 @@ def move():
                     else:
                         direction = 'down'
 
-
-        if (direction == 'up'):
-            if (a[0] == True):
+            if (b == True):
                 return {
                     'move': direction,
-                    'taunt': 'blast off!'
-                }
-        if (direction =='down'):
-            if (a[1] == True):
-                return {
-                    'move': direction,
-                    'taunt': 'blast off!'
-                }
-        if (direction =='left'):
-            if (a[2] == True):
-                return {
-                    'move': direction,
-                    'taunt': 'blast off!'
-                }
-        if (direction =='right'):
-            if (a[3] == True):
-                return {
-                    'move': direction,
-                    'taunt': 'blast off!'
-                }        
-
-        for i in a:
-            if (a[i] == True):
-                return {
-                    'move': directions[i],
                     'taunt': 'blast off!'
                 }     
 
-    return {
-              'move': directions[i],
-              'taunt': 'blast off!'
-          }
-    # direction = 'up'
-    # if (grid[x+1][y] == WALL):
-    #     a[3] = False
-    # elif (grid[x][y-1] == WALL):
-    #     a[0] = False
-    # elif (grid[x-1][y] == WALL):
-    #     a[2] = False
-    # elif (grid[x][y+1] == WALL):
-    #     a[1] = False
-    # else:
-    #     if (grid[x+1][y] == SNAKE):
-    #         direction = 'left'
-    #     elif (grid[x][y-1] == SNAKE):
-    #         direction = 'down'
-    #     elif (grid[x-1][y] == SNAKE):
-    #         direction = 'right'
-    #     elif (grid[x][y+1] == SNAKE):
-    #         direction = 'up'
-    #     else:
-    #         direction = 'right'
+    direction = 'up'
+    if (grid[x+1][y] == WALL):
+        if (grid[x][y-1] == WALL):
+            direction = 'left'
+        else:
+            direction = 'up'
+    elif (grid[x][y-1] == WALL):
+        if (grid[x-1][y] == WALL):
+            direction = 'down'
+        else:
+            direction = 'left'
+    elif (grid[x-1][y] == WALL):
+        if (grid[x][y+1] == WALL):
+            direction = 'right'
+        else:
+            direction = 'down'
+    elif (grid[x][y+1] == WALL):
+        if (grid[x+1][y] == WALL):
+            direction = 'up'
+        else:
+            direction = 'right'
+    else:
+        if (grid[x+1][y] == SNAKE):
+            direction = 'left'
+        elif (grid[x][y-1] == SNAKE):
+            direction = 'down'
+        elif (grid[x-1][y] == SNAKE):
+            direction = 'right'
+        elif (grid[x][y+1] == SNAKE):
+            direction = 'up'
+        else:
+            direction = 'right'
 
-    # return {
-    #     'move': direction,
-    #     'taunt': 'blast off!'
-    # }
+    return {
+        'move': direction,
+        'taunt': 'blast off!'
+    }
 
 
 # Expose WSGI app (so gunicorn can find it)
