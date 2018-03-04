@@ -3,6 +3,7 @@ import os
 import random
 
 SNAKE = 1
+ENEMY = 4
 WALL = 2
 FOOD = 3
 
@@ -74,7 +75,40 @@ def move():
         if not (s['id'] == mysnake['id']):
             if (s['length'] > 0):
                 for p in s['body']['data']:
-                    grid[p['x']][p['y']] = WALL
+                    grid[p['x']][p['y']] = ENEMY
+
+    b = False
+    direction = 'up'
+    if (grid[x+1][y] == ENEMY):
+        b = True
+        if (grid[x][y-1] == ENEMY):
+            direction = 'left'
+        else:
+            direction = 'up'
+    elif (grid[x][y-1] == ENEMY):
+        b = True
+        if (grid[x-1][y] == ENEMY):
+            direction = 'down'
+        else:
+            direction = 'left'
+    elif (grid[x-1][y] == ENEMY):
+        b = True
+        if (grid[x][y+1] == ENEMY):
+            direction = 'right'
+        else:
+            direction = 'down'
+    elif (grid[x][y+1] == ENEMY):
+        b = True
+        if (grid[x+1][y] == ENEMY):
+            direction = 'up'
+        else:
+            direction = 'right'
+
+    if (b == True):
+        return {
+            'move': direction,
+            'taunt': 'blast off!'
+        }
 
     b = False
     if (mysnake['health'] <= 100):
@@ -95,11 +129,11 @@ def move():
                     else:
                         direction = 'down'
 
-            # if (b == True):
-            #     return {
-            #         'move': direction,
-            #         'taunt': 'blast off!'
-            #     }     
+            if (b == True):
+                return {
+                    'move': direction,
+                    'taunt': 'blast off!'
+                }     
 
     direction = 'up'
     if (grid[x+1][y] == WALL):
