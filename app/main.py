@@ -70,7 +70,7 @@ def move():
         y = coors['y']
         break
 
-    # TODO: Do things with data
+    # get coordinates of enemy snakes
     for s in data['snakes']['data']:
         if not (s['id'] == mysnake['id']):
             if (s['length'] > 0):
@@ -111,7 +111,7 @@ def move():
         }
 
     b = False
-    if (mysnake['health'] <= 50):
+    if (mysnake['health'] <= 75):
         for i in range(-5,5):
             if ((x+i > 0) & (x+i < data['width'])):
                 if (grid[x+i][y] == FOOD):
